@@ -1,0 +1,22 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "docker-proxy"
+main = "src/index.js"
+compatibility_date = "2025-02-17"
+
+# 默认环境变量配置
+[vars]
+
+# 模式，可选 redirect (重定向)、proxy (代理)、static (静态内容)
+HOME_MODEL = "static"
+
+# 首页内容，根据 HOME_MODEL 配置
+# redirect、proxy 模式，为对应重定向/代理地址，默认值均为 Docker Hub 首页
+# static 模式，为静态文件内容，内置 ningx 和 search 两个选项，默认为 search
+HOME_VALUE = "search"
+
+# wrangler.toml (wrangler v3.78.6^)
+[observability]
+enabled = true
+
+[placement]
+mode = "smart"
