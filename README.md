@@ -1,4 +1,5 @@
-# docker-proxy
+![screenshot](https://github.com/user-attachments/assets/2e50566f-038e-4d4b-8d7d-46ef93ee9d81)
+# Docker Proxy
 
 使用 Cloudflare Workers 加速 Docker Registry Mirrors
 
