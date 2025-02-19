@@ -3,6 +3,10 @@
 
 使用 Cloudflare Workers 加速 Docker Registry Mirrors
 
+> [!WARNING]
+> 由于违反 [Cloudflare 协议](https://www.cloudflare.com/zh-cn/terms/) 用户协议存在被封号的风险。  
+> 请务必限制访问范围，不要用于搭建公开或公共镜像站点  
+
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/fordes123/docker-proxy)
 
 ## 路由说明
