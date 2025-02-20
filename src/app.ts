@@ -61,7 +61,6 @@ export const handler = async (request: Request) => {
 					} else {
 
 						let _url = copyURL(url, DOCKER_HUB_URL);
-						console.log(`重定向 => ${_url}`);
 						return fetch(new Request(_url, request));
 					}
 				}
