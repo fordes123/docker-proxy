@@ -19,6 +19,38 @@ Fork 本仓库并在 [Cloudflare Workers](https://dash.cloudflare.com/) 中导�
 
 Fork 本仓库并在 [Deno](https://dash.deno.com/new_project) 中导入，`Entrypoint` 选择为 `./src/deno.ts`
 
+### Docker
+
+> [!TIP]
+> 基于 `denoland/deno:alpine` 构建，需搭配 Web 服务器使用
+
+#### docker-compose
+
+```shell
+services:
+  docker-proxy:
+    image: fordes123/docker-proxy:latest
+    container_name: docker-proxy
+    environment:
+      HOME_MODEL: static
+      HOME_VALUE: search
+    ports:
+      - 1993:1993
+    restart: unless-stopped
+```
+
+#### docker cli
+
+```shell
+docker run -d \
+  --name docker-proxy \
+  --restart unless-stopped \
+  --env HOME_MODEL='static' \
+  --env HOME_MODEL='search' \
+  -p 1993:1993 \
+  fordes123/docker-proxy:latest
+```
+
 ## 路由说明
 
 ### 域名匹配
