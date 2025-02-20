@@ -1,7 +1,7 @@
 #:schema node_modules/wrangler/config-schema.json
 name = "docker-proxy"
-main = "src/index.js"
-compatibility_date = "2025-02-17"
+main = "src/workers.ts"
+compatibility_date = "2025-02-20"
 
 # 默认环境变量配置
 [vars]
