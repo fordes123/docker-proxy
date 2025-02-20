@@ -1,13 +1,15 @@
 {
-  "name": "docker-proxy",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "deploy": "wrangler deploy",
-    "dev": "wrangler dev",
-    "start": "wrangler dev"
-  },
-  "devDependencies": {
-    "wrangler": "^3.100.0"
-  }
+	"name": "docker-proxy",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "wrangler dev",
+		"wrangler": "wrangler dev",
+		"deno": "deno run --allow-net --allow-env src/deno.ts"
+	},
+	"devDependencies": {
+		"wrangler": "^3.100.0",
+		"deno": "^2.2.0"
+	}
 }
