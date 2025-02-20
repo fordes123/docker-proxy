@@ -1,13 +1,23 @@
 ![screenshot](https://github.com/user-attachments/assets/2e50566f-038e-4d4b-8d7d-46ef93ee9d81)
 # Docker Proxy
 
-使用 Cloudflare Workers 加速 Docker Registry Mirrors
+使用 Cloudflare Workers 或 Deno 加速 Docker Registry Mirrors
+
+## 部署
+
+### Cloudflare Workers
 
 > [!WARNING]
-> 由于违反 [Cloudflare 协议](https://www.cloudflare.com/zh-cn/terms/) 用户协议存在被封号的风险。  
-> 请务必限制访问范围，不要用于搭建公开或公共镜像站点  
+> 由于违反 [Cloudflare 协议](https://www.cloudflare.com/zh-cn/terms/) 用户协议存在被封号的风险。
+> 请务必限制访问范围，不要用于搭建公开或公共镜像站点
+
+Fork 本仓库并在 [Cloudflare Workers](https://dash.cloudflare.com/) 中导入，或者点击下方按钮一键部署
 
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/fordes123/docker-proxy)
+
+### Deno
+
+Fork 本仓库并在 [Deno](https://dash.deno.com/new_project) 中导入，`Entrypoint` 选择为 `./src/deno.ts`
 
 ## 路由说明
 
