@@ -5,11 +5,11 @@
 
 ## 部署
 
-### Cloudflare Workers
-
 > [!WARNING]
-> 由于违反 [Cloudflare 协议](https://www.cloudflare.com/zh-cn/terms/) 用户协议存在被封号的风险。
-> 请务必限制访问范围，不要用于搭建公开或公共镜像站点
+> 代理行违反 Cloudflare、Deno 等平台用户协议，存在被封号的风险  
+> 请务必限制访问范围，或通过下方环境变量添加合理的伪装，不建议用于搭建公开或公共镜像站点
+
+### Cloudflare Workers
 
 Fork 本仓库并在 [Cloudflare Workers](https://dash.cloudflare.com/) 中导入，或者点击下方按钮一键部署
 
@@ -17,7 +17,8 @@ Fork 本仓库并在 [Cloudflare Workers](https://dash.cloudflare.com/) 中导�
 
 ### Deno
 
-Fork 本仓库并在 [Deno](https://dash.deno.com/new_project) 中导入，`Entrypoint` 选择为 `./src/deno.ts`
+Fork 本仓库并在 [Deno](https://dash.deno.com/new_project) 中导入，`Entrypoint` 选择为 `./src/deno.ts`  
+(`Framework preset`、`Install command`、`Build command` 等配置项请保持为无或者空)
 
 ### Docker
 
