@@ -1,4 +1,4 @@
-import { Adapter } from "./adapter.ts"
+import { Adapter } from './adapter.ts';
 
 // HTML templates
 const NGINX_TEMPLATE = `<!DOCTYPE html><html><head><title>Welcome to nginx!</title><style>body{width:35em;margin:0 auto;font-family:Tahoma,Verdana,Arial,sans-serif}</style></head><body><h1>Welcome to nginx!</h1><p>If you see this page,the nginx web server is successfully installed and working.Further configuration is required.</p><p>For online documentation and support please refer to <a href="http://nginx.org/">nginx.org</a>.<br/>Commercial support is available at <a href="http://nginx.com/">nginx.com</a>.</p><p><em>Thank you for using nginx.</em></p></body></html>`;
@@ -22,9 +22,10 @@ const REGISTRY_ROUTES: Record<string, string> = {
 };
 
 export class DockerProxy {
-	constructor(private readonly adapter: Adapter) {}
+	constructor(private readonly adapter: Adapter) {
+	}
 
-	async fetch(request: Request): Promise<Response> {
+	fetch = async (request: Request): Promise<Response> => {
 		const url = new URL(request.url);
 		const headers = new Headers(request.headers);
 
@@ -33,7 +34,7 @@ export class DockerProxy {
 		}
 
 		return this.handleDockerRequest(request, url, headers);
-	}
+	};
 
 	private async handleBrowserRequest(request: Request, url: URL): Promise<Response> {
 		const [model, value] = this.getHomeConfig();
