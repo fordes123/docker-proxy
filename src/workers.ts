@@ -1,15 +1,10 @@
-import { handler, registerEnvAdapter } from "./app.ts";
-import { createEnvAdapter } from "./env.ts";
-
-export interface Env {
-    HOME_MODEL?: string;
-    HOME_VALUE?: string;
-}
+import { DockerProxy } from './docker-proxy.ts';
+import { WorkersAdapter } from './adapter.ts';
 
 export default {
-    async fetch(request, env, ctx) {
-        let adapter = createEnvAdapter(env);
-        registerEnvAdapter(adapter);
-        return handler(request);
-    }
+	async fetch(request, env, ctx) {
+		let adapter = new WorkersAdapter(env);
+		const dockerProxy = new DockerProxy(adapter);
+		return dockerProxy.fetch(request);
+	}
 };
