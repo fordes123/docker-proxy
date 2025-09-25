@@ -9,15 +9,22 @@ export class DenoAdapter implements Adapter {
 }
 
 export class WorkersAdapter implements Adapter {
-	constructor(private readonly env: any) {}
+	constructor(private readonly env: any) {
+	}
 
 	get(key: string): string | undefined {
 		return this.env[key];
 	}
 }
 
-export class NetlifyEnvAdapter implements Adapter {
+export class NetlifyAdapter implements Adapter {
 	get(key: string): string | undefined {
-		return Netlify.env.get(key)
+		return Netlify.env.get(key);
+	}
+}
+
+export class VercelAdapter implements Adapter {
+	get(key: string): string | undefined {
+		return process.env[key];
 	}
 }

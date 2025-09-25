@@ -1,10 +1,10 @@
 import type { Config, Context } from '@netlify/edge-functions';
 import { DockerProxy } from '../../src/docker-proxy.ts';
-import { NetlifyEnvAdapter } from '../../src/adapter.ts';
+import { NetlifyAdapter } from '../../src/adapter.ts';
 
 export default async (request: Request, context: Context) => {
 
-	let adapter = new NetlifyEnvAdapter();
+	let adapter = new NetlifyAdapter();
 	const dockerProxy = new DockerProxy(adapter);
 
 	return dockerProxy.fetch(request);
