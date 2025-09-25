@@ -5,6 +5,6 @@ export const config = {
 };
 
 export default function handler(request: Request) {
-	const adapter = { get: (key: string) => process.env[key] };
-	return new DockerProxy(adapter).fetch(request);
+	const adapter = { env: (key: string) => process.env[key], provide: () => 'vercel' };
+	return new DockerProxy(adapter).proxy(request);
 }

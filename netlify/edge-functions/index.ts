@@ -3,7 +3,7 @@ import { DockerProxy } from '../../src/docker-proxy.ts';
 
 export default async (request: Request, context: Context) => {
 
-	const adapter = { get: (key: string) => Netlify.env.get(key) };
-	return new DockerProxy(adapter).fetch(request);
+	const adapter = { env: (key: string) => Netlify.env.get(key), provide: () => 'netlify' };
+	return new DockerProxy(adapter).proxy(request);
 
 };

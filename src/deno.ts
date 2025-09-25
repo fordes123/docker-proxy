@@ -9,7 +9,7 @@ const PERMISSIONS = {
 	env: true
 };
 
-const adapter = { get: (key: string) => Deno.env.get(key) };
-const handler = new DockerProxy(adapter).fetch;
-
-Deno.serve({ port: PORT, PERMISSIONS }, handler);
+const adapter = { env: (key: string) => Deno.env.get(key), provide: () => 'deno' };
+Deno.serve({ port: PORT, PERMISSIONS }, async (request: Request) => {
+	return new DockerProxy(adapter).proxy(request);
+});

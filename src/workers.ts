@@ -2,7 +2,7 @@ import { DockerProxy } from './docker-proxy.ts';
 
 export default {
 	async fetch(request, env, ctx) {
-		const adapter = { get: (key: string) => env[key] };
-		return new DockerProxy(adapter).fetch(request);
+		const adapter = { env: (key: string) => env[key], provide: () => 'workers' };
+		return new DockerProxy(adapter).proxy(request);
 	}
 };
