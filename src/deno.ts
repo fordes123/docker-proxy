@@ -1,5 +1,4 @@
 import { DockerProxy } from './docker-proxy.ts';
-import { DenoAdapter } from './adapter.ts';
 
 /**
  * 启动服务
@@ -10,7 +9,7 @@ const PERMISSIONS = {
 	env: true
 };
 
-let adapter = new DenoAdapter();
+const adapter = { get: (key: string) => Deno.env.get(key) };
 const handler = new DockerProxy(adapter).fetch;
 
 Deno.serve({ port: PORT, PERMISSIONS }, handler);
