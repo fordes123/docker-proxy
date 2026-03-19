@@ -9,7 +9,7 @@
 		"deno": "deno run --allow-net --allow-env src/deno.ts"
 	},
 	"devDependencies": {
-		"wrangler": "^4.59.1",
+		"wrangler": "^4.75.0",
 		"deno": "^2.2.0"
 	}
 }
