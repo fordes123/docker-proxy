@@ -1,6 +1,6 @@
 {
 	"name": "docker-proxy",
-	"version": "0.0.1",
+	"version": "1.0.1",
 	"private": true,
 	"scripts": {
 		"deploy": "wrangler deploy",
@@ -9,7 +9,10 @@
 		"deno": "deno run --allow-net --allow-env src/deno.ts"
 	},
 	"devDependencies": {
-		"wrangler": "^4.75.0",
-		"deno": "^2.2.0"
+		"wrangler": "^4.100.0",
+		"deno": "^2.8.3"
+	},
+	"overrides": {
+		"esbuild": "^0.28.1"
 	}
 }
