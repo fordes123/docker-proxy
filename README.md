@@ -74,13 +74,10 @@ docker run -d \
 
 ## ⚙️ 环境变量配置
 
-`HOME_MODEL` 控制浏览器访问时的响应方式，默认为 `static`。两个变量均可省略。
-
-| `HOME_MODEL` | `HOME_VALUE` 用途 | `HOME_VALUE` 默认值 |
-| --- | --- | --- |
-| `static` | 静态内容，可填 `search`、`nginx` 或自定义文本 | `search` |
-| `redirect` | 重定向目标 URL | `https://hub.docker.com` |
-| `proxy` | 代理目标 URL | `https://hub.docker.com` |
+| 变量名          | 必填 | 默认值      | 说明                                                                                                                                               |
+|--------------|----|----------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| `HOME_MODEL` | ❌  | `static` | 浏览器访问时的策略 <br/>- `redirect`：重定向<br/>- `proxy`：代理<br/>- `static`：静态内容                                                                             |
+| `HOME_VALUE` | ❌  | `search` | 策略对应值 <br/>- `redirect`：重定向目标 URL (`https://hub.docker.com`)<br/>- `proxy`：代理域名 (`hub.docker.com`)<br/>- `static`：静态文本内容 (预设 `nginx`、`search`) |
 
 ## 🙏 致谢
 
