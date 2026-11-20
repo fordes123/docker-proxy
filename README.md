@@ -2,7 +2,7 @@
 
 # Docker Proxy
 
-无服务器自建 Docker Registry 镜像代理，支持 Cloudflare Workers、Deno、Netlify 和 Docker 部署。
+无服务器自建 Docker Registry 镜像代理，支持 Cloudflare Workers、Deno、Netlify、EdgeOne Makers 和 Docker 部署。
 
 > [!WARNING]
 > 代理行为可能违反 Cloudflare、Deno 等平台用户协议，存在被封号的风险。
@@ -10,31 +10,18 @@
 
 ## 🚀 快速部署
 
-### Cloudflare Workers
-
-Fork 本仓库并在 [Cloudflare Workers](https://dash.cloudflare.com/) 中导入，或点击下方按钮一键部署：
-
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/fordes123/docker-proxy)
-
-### Deno
-
-Fork 本仓库并在 [Deno Deploy](https://dash.deno.com/new_project) 中导入：
-
-- `Entrypoint` 选择 `./src/deno.ts`
-- `Framework preset`、`Install command`、`Build command` 等配置项请保持为空
-
-### Netlify
-
-Fork 本仓库并在 [Netlify](https://app.netlify.com/) 中导入，或点击下方按钮一键部署：
-
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/fordes123/docker-proxy)
+[![Deploy to EdgeOne](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://edgeone.ai/pages/new?repository-url=https%3A%2F%2Fgithub.com%2Ffordes123%2Fdocker-proxy)
 
-### Docker
+点击上方按钮进行一键部署，亦可以 fork 本仓库后手动导入对应平台。
+
+## 💪 自托管
 
 > [!TIP]
 > 基于 `denoland/deno:alpine` 构建，需搭配 Web 服务器使用。
 
-#### docker-compose
+#### Docker Compose
 
 ```yaml
 services:
@@ -49,7 +36,7 @@ services:
     restart: unless-stopped
 ```
 
-#### docker cli
+#### Docker CLI
 
 ```shell
 docker run -d \
@@ -87,10 +74,13 @@ docker run -d \
 
 ## ⚙️ 环境变量配置
 
-| 变量名          | 必填 | 默认值      | 说明                                                                                                                                               |
-|--------------|----|----------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| `HOME_MODEL` | ❌  | `static` | 浏览器访问时的策略 <br/>- `redirect`：重定向<br/>- `proxy`：代理<br/>- `static`：静态内容                                                                             |
-| `HOME_VALUE` | ❌  | `search` | 策略对应值 <br/>- `redirect`：重定向目标 URL (`https://hub.docker.com`)<br/>- `proxy`：代理域名 (`hub.docker.com`)<br/>- `static`：静态文本内容 (预设 `nginx`、`search`) |
+`HOME_MODEL` 控制浏览器访问时的响应方式，默认为 `static`。两个变量均可省略。
+
+| `HOME_MODEL` | `HOME_VALUE` 用途 | `HOME_VALUE` 默认值 |
+| --- | --- | --- |
+| `static` | 静态内容，可填 `search`、`nginx` 或自定义文本 | `search` |
+| `redirect` | 重定向目标 URL | `https://hub.docker.com` |
+| `proxy` | 代理目标 URL | `https://hub.docker.com` |
 
 ## 🙏 致谢
 
