@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM} denoland/deno:alpine-2.8.3
+FROM --platform=${TARGETPLATFORM} denoland/deno:alpine-2.9.6
 LABEL maintainer="fordes123 <github.com/fordes123>"
 
 ENV HOME_MODEL=static \
