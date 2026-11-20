@@ -95,7 +95,7 @@ export class DockerProxy {
 	private async handleDockerRegistry(request: Request, url: URL, headers: Headers, targetUrl: URL): Promise<Response> {
 		// Handle token requests
 		if (url.pathname.includes('/token')) {
-			return this.handleTokenRequest(request, url, headers);
+			return this.handleTokenRequest(request, url);
 		}
 
 		// Add library/ prefix for official Docker images
@@ -110,9 +110,8 @@ export class DockerProxy {
 		return this.handleDockerResponse(request, response, url);
 	}
 
-	private async handleTokenRequest(request: Request, url: URL, headers: Headers): Promise<Response> {
+	private async handleTokenRequest(request: Request, url: URL): Promise<Response> {
 		url.hostname = DOCKER_AUTH_HOST;
-		headers.set('Host', DOCKER_AUTH_HOST);
 
 		// Fix official repository scope
 		const scope = url.searchParams.get('scope');
@@ -123,7 +122,9 @@ export class DockerProxy {
 			}
 		}
 
-		return fetch(new Request(url, request));
+		const tokenRequest = new Request(url, request);
+		tokenRequest.headers.set('Host', DOCKER_AUTH_HOST);
+		return fetch(tokenRequest);
 	}
 
 	private normalizeDockerPath(url: URL): void {
